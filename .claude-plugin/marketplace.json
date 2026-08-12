@@ -4,14 +4,13 @@
     "name": "Marcos Juncos"
   },
   "metadata": {
-    "description": "Skills for code craft — design review, complexity, and refactoring.",
-    "version": "0.1.0",
-    "pluginRoot": "./plugins"
+    "description": "Skills for code craft \u2014 design review, complexity, and refactoring.",
+    "version": "0.1.0"
   },
   "plugins": [
     {
       "name": "craft",
-      "source": "craft",
+      "source": "./plugins/craft",
       "version": "0.1.0",
       "description": "Reviews a diff for design quality: code smells, needless complexity, readability, and whether a pattern would genuinely simplify it.",
       "author": {
