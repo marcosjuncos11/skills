@@ -49,9 +49,9 @@ Order matters: complexity findings subsume smell findings, and smell findings ar
 
 **3. Duplication** — in both directions. Real duplication (change one, must change the other) is a cost. Incidental similarity is not, and collapsing it produces an abstraction that will be wrong the first time the two cases diverge. Rule of three. Prefer duplication over the wrong abstraction.
 
-**4. Readability** — nesting depth and guard clauses, names that state the concept rather than the type, boolean parameters at call sites, negated conditionals, magic values, error handling that buries the happy path, comments that restate the code or contradict it.
+**4. Readability** — nesting depth and cyclomatic complexity: 3+ levels of nesting or a function whose branch count you cannot hold in your head gets guard clauses, early returns, or Decompose Conditional before anything fancier. Also: names that state the concept rather than the type, boolean parameters at call sites, negated conditionals, magic values, error handling that buries the happy path, comments that restate the code or contradict it. Long functions and large classes belong to pass 2's vocabulary (Long Function, Large Class) — break them along responsibility seams, not line counts.
 
-**5. Patterns** — only for pains already found in passes 1-4. Map the smell to the pattern, never the reverse. If no earlier pass found a pain, this pass produces nothing, and that is a normal outcome. See `references/patterns.md`.
+**5. Patterns & principles** — only for pains already found in passes 1-4. Map the smell to the pattern, never the reverse. SOLID applies here with the caveats in the reference (Single Responsibility as "one reason to change", Liskov violations as live bugs, Dependency Inversion only where something concrete breaks). If no earlier pass found a pain, this pass produces nothing, and that is a normal outcome. See `references/patterns.md`.
 
 **6. Seams** — can the change be tested without standing up the world? Hidden dependencies, hard-coded collaborators, clock/randomness/network/IO reached for directly instead of passed in.
 
