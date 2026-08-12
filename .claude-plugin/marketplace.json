@@ -1,0 +1,32 @@
+{
+  "name": "marcosjuncos-skills",
+  "owner": {
+    "name": "Marcos Juncos"
+  },
+  "metadata": {
+    "description": "Skills for code craft — design review, complexity, and refactoring.",
+    "version": "0.1.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "craft",
+      "source": "craft",
+      "version": "0.1.0",
+      "description": "Reviews a diff for design quality: code smells, needless complexity, readability, and whether a pattern would genuinely simplify it.",
+      "author": {
+        "name": "Marcos Juncos"
+      },
+      "license": "MIT",
+      "category": "development",
+      "keywords": [
+        "code-review",
+        "refactoring",
+        "code-smells",
+        "clean-code",
+        "design-patterns",
+        "complexity"
+      ]
+    }
+  ]
+}
