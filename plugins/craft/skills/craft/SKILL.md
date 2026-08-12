@@ -47,7 +47,7 @@ Order matters: complexity findings subsume smell findings, and smell findings ar
 
 **2. Smells** — the vocabulary. Name what is wrong using the standard catalog rather than "this feels off". A named smell comes with a known refactoring, which makes the advice actionable. See `references/smells.md`.
 
-**3. Duplication** — in both directions. Real duplication (change one, must change the other) is a cost. Incidental similarity is not, and collapsing it produces an abstraction that will be wrong the first time the two cases diverge. Rule of three. Prefer duplication over the wrong abstraction.
+**3. Duplication** — DRY, applied in both directions. Real duplication (change one, must change the other) is a cost worth removing. Incidental similarity is not — collapsing it produces an abstraction that will be wrong the first time the two cases diverge. Rule of three. Prefer duplication over the wrong abstraction. YAGNI is the tiebreaker: if the justification for the shared abstraction is a future case, the answer is no.
 
 **4. Readability** — nesting depth and cyclomatic complexity: 3+ levels of nesting or a function whose branch count you cannot hold in your head gets guard clauses, early returns, or Decompose Conditional before anything fancier. Also: names that state the concept rather than the type, boolean parameters at call sites, negated conditionals, magic values, error handling that buries the happy path, comments that restate the code or contradict it. Long functions and large classes belong to pass 2's vocabulary (Long Function, Large Class) — break them along responsibility seams, not line counts.
 

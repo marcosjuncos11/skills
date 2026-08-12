@@ -53,6 +53,7 @@ Note the third column. In Python especially, first-class functions, `dict`, `mat
 - **Law of Demeter.** Good as a coupling smell detector (Message Chains), bad as a rule — mechanical compliance produces Middle Man wrappers, which is a worse smell than the chain.
 - **Composition over inheritance.** Holds up better than almost anything else on this list.
 - **Tell, don't ask.** Behavior near data. The main defense against anemic models and Feature Envy.
+- **DRY.** About knowledge, not text: two code blocks that look alike but encode different decisions are not duplication, and deduplicating them couples things that should drift apart. The test is "if one changes, must the other?" — yes means extract, no means leave it. Rule of three before abstracting.
 - **YAGNI.** The tiebreaker whenever a proposal's justification is a future case. If the argument is "we'll probably need it", the answer is no, and the cost of adding it later is almost always lower than the cost of carrying it wrong.
 
 ## Architecture-level, when the diff crosses layers

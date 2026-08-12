@@ -93,9 +93,33 @@ plugins/craft/skills/craft/
 
 Once a skill is invoked, its rendered body stays in context for the rest of the session. That makes every line of `SKILL.md` a recurring token cost, so `SKILL.md` holds only the procedure and the reference material loads on demand — a design that costs nothing until a pass actually needs it.
 
-### Six passes, in a deliberate order
+### The rulebook — every pass, principle, and pattern source
 
-Complexity → smells → duplication → readability → **patterns** → seams.
+**Six passes, in a deliberate order:**
+
+| # | Pass | What it hunts | Rulebook |
+| --- | --- | --- | --- |
+| 1 | Complexity | Shallow modules, information leakage, pass-through methods, config that pushes decisions onto callers | Ousterhout — deep vs shallow ([complexity.md](plugins/craft/skills/craft/references/complexity.md)) |
+| 2 | Smells | Long Function, Large Class, Long Parameter List, Data Clumps, Primitive Obsession, Divergent Change, Shotgun Surgery, Feature Envy, Message Chains, Middle Man… each with its named refactoring | Fowler's catalog ([smells.md](plugins/craft/skills/craft/references/smells.md)) |
+| 3 | Duplication | DRY, applied to *knowledge* not text — real duplication (change one, must change the other) vs incidental similarity. Rule of three; YAGNI as tiebreaker | Fowler, Sandi Metz ("prefer duplication over the wrong abstraction") |
+| 4 | Readability | Nesting depth and cyclomatic complexity (3+ levels → guard clauses, early returns, Decompose Conditional), boolean params, negated conditionals, magic values, buried happy path | Fowler, Beck |
+| 5 | Patterns & principles | GoF patterns *and SOLID* — only mapped onto pains passes 1–4 already located. Each pattern entry carries a cheaper alternative to weigh first | GoF, Kerievsky ([patterns.md](plugins/craft/skills/craft/references/patterns.md)) |
+| 6 | Seams | Testability — hidden dependencies, hard-coded collaborators, direct clock/network/IO | Feathers |
+
+**Principles it applies, each with its caveat** (all in [patterns.md](plugins/craft/skills/craft/references/patterns.md)):
+
+- **Single Responsibility** — read as "one reason to change"; "does one thing" is unfalsifiable
+- **Open/Closed** — real, but the axis of variation can't be predicted; let the second change reveal it
+- **Liskov Substitution** — violations are live bug sources, always flagged
+- **Interface Segregation** — usually "a callable or small protocol instead of a fat object"
+- **Dependency Inversion** — legitimate for testability; ceremony when it's just diagram-worship
+- **DRY** — about knowledge, not text; the test is "if one changes, must the other?"
+- **YAGNI** — the tiebreaker; "we'll probably need it" always loses
+- **Composition over inheritance** · **Law of Demeter** (as a smell detector, not a rule) · **Tell, don't ask**
+
+Nesting and cyclomatic complexity get guard clauses and early returns before anything fancier; long methods and classes get broken along *responsibility seams* — one reason to change per unit — never by line count.
+
+### Why patterns come fifth
 
 Patterns are fifth on purpose. A reviewer told to "apply design patterns" will find pattern opportunities everywhere and hand you an `AbstractStrategyFactoryProvider` for a thirty-line function. So the pattern pass is gated: it may only propose a pattern for a pain an *earlier* pass already located at a specific line. If passes 1–4 found nothing, pass 5 produces nothing, and the skill treats that as a normal outcome rather than a failure to be thorough.
 
