@@ -43,6 +43,8 @@ If the intent is genuinely unclear from the code, ask before reviewing.
 
 Order matters: complexity findings subsume smell findings, and smell findings are what justify patterns. Working backwards produces pattern-shaped solutions to problems that don't exist.
 
+**The Zen of Python runs through every pass.** Each aphorism maps to the pass where it bites. Two examples: *Flat is better than nested* belongs to pass 4, and *Errors should never pass silently* belongs to passes 4 and 6. Check the diff against them as you go. A Zen violation is a finding only if it clears the gate in Step 4, and when it does, cite the line. Swallowed errors (bare `except`, `except Exception: pass`, a `None` return that hides a failure) always clear the gate. See `references/zen.md`.
+
 **1. Complexity** — the arbiter. For each new or modified unit: is it *deep* (small interface, meaningful work hidden) or *shallow* (interface nearly as large as the implementation)? Look for information leakage (two places that must both change together), pass-through methods, temporal decomposition (split by execution order rather than by knowledge), and configuration parameters that push a decision onto the caller who knows less than you do. See `references/complexity.md`.
 
 **2. Smells** — the vocabulary. Name what is wrong using the standard catalog rather than "this feels off". A named smell comes with a known refactoring, which makes the advice actionable. See `references/smells.md`.
@@ -83,7 +85,7 @@ Do not edit files. Propose; let the author choose. If they ask for the edits aft
 ```
 **Verdict:** <one line — is this good to merge as-is, worth one pass, or does it need rework>
 
-**<Blocking | Worth doing | Taste>** — <file>:<line> — <smell name>
+**<Blocking | Worth doing | Taste>** — <file>:<line> — <smell name> [— *<Zen line, if one applies>*]
 <One or two sentences: what the cost is, in present tense.>
 <Proposed code, as a minimal diff or snippet.>
 <Cost of the fix, if it is not obviously cheap.>

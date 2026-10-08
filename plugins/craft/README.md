@@ -45,7 +45,7 @@ Six passes: complexity → smells → duplication → readability → patterns �
 
 Every finding must clear a five-part gate, the sharpest clause being that the cost has to be **present tense** — "if we ever add another provider" is not a finding.
 
-Ousterhout's complexity test arbitrates; Fowler's smell catalog supplies the vocabulary. See the [repo README](../../README.md#how-its-built) for why those two and not *Clean Code*'s line-count advice.
+The Zen of Python runs through every pass, and findings cite the line they violate (*Flat is better than nested*, *Errors should never pass silently*). Ousterhout's complexity test arbitrates; Fowler's smell catalog supplies the vocabulary. See the [repo README](../../README.md#how-its-built) for why those two and not *Clean Code*'s line-count advice.
 
 ## Files
 
@@ -55,5 +55,6 @@ skills/craft/
 └── references/
     ├── complexity.md     # deep vs shallow modules, information leakage
     ├── smells.md         # Fowler's catalog: smell → tell → remedy
-    └── patterns.md       # GoF, with a cheaper alternative for each
+    ├── patterns.md       # GoF, with a cheaper alternative for each
+    └── zen.md            # Zen of Python, each line mapped to a pass
 ```

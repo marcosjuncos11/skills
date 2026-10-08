@@ -1,6 +1,6 @@
 {
   "name": "craft",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Reviews a diff for design quality: code smells, needless complexity, readability, and whether a pattern would genuinely simplify it.",
   "author": {
     "name": "Marcos Juncos"
@@ -13,6 +13,7 @@
     "code-smells",
     "clean-code",
     "design-patterns",
-    "complexity"
+    "complexity",
+    "zen-of-python"
   ]
 }

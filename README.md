@@ -88,7 +88,8 @@ plugins/craft/skills/craft/
 └── references/
     ├── complexity.md           # loaded during pass 1
     ├── smells.md               # loaded during pass 2
-    └── patterns.md             # loaded during pass 5
+    ├── patterns.md             # loaded during pass 5
+    └── zen.md                  # Zen of Python, mapped onto every pass
 ```
 
 Once a skill is invoked, its rendered body stays in context for the rest of the session. That makes every line of `SKILL.md` a recurring token cost, so `SKILL.md` holds only the procedure and the reference material loads on demand — a design that costs nothing until a pass actually needs it.
@@ -117,6 +118,8 @@ Once a skill is invoked, its rendered body stays in context for the rest of the 
 - **YAGNI** — the tiebreaker; "we'll probably need it" always loses
 - **Composition over inheritance** · **Law of Demeter** (as a smell detector, not a rule) · **Tell, don't ask**
 
+**The Zen of Python** (PEP 20) runs through all six passes. It isn't a seventh pass: each aphorism is mapped in [zen.md](plugins/craft/skills/craft/references/zen.md) to the pass where it applies. *Flat is better than nested* belongs to readability, *There should be one obvious way* to duplication, *Never is often better than right now* to the YAGNI gate. A Zen violation still has to clear the gate, and when it does, the finding cites the line. *Errors should never pass silently* is the one that always clears it: a swallowed exception is at least Worth doing.
+
 Nesting and cyclomatic complexity get guard clauses and early returns before anything fancier; long methods and classes get broken along *responsibility seams* — one reason to change per unit — never by line count.
 
 ### Why patterns come fifth
@@ -131,7 +134,7 @@ Patterns are fifth on purpose. A reviewer told to "apply design patterns" will f
 
 Pretending the canon is unanimous produces mush, so the skill picks: **Ousterhout's complexity test is the arbiter, Fowler's catalog is the detection vocabulary.** Smell names are for making advice actionable — "Feature Envy, move the method to `Invoice`" beats "this feels messy" — but whether a finding survives is decided by whether it reduces cognitive load, change amplification, or unknown-unknowns.
 
-Drawn from: Fowler, *Refactoring* (2nd ed.) · Ousterhout, *A Philosophy of Software Design* · Martin, *Clean Code* · Gamma et al., *Design Patterns* · Kerievsky, *Refactoring to Patterns* · Feathers, *Working Effectively with Legacy Code* · Beck, *Tidy First?* · Metz, *99 Bottles of OOP*
+Drawn from: Peters, *The Zen of Python* (PEP 20) · Fowler, *Refactoring* (2nd ed.) · Ousterhout, *A Philosophy of Software Design* · Martin, *Clean Code* · Gamma et al., *Design Patterns* · Kerievsky, *Refactoring to Patterns* · Feathers, *Working Effectively with Legacy Code* · Beck, *Tidy First?* · Metz, *99 Bottles of OOP*
 
 ### Every finding passes a gate
 
